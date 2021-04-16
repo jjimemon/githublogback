@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- OUTPUT CONFIGURATION -->
+	<appender name="Salida1"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>C://dev//logs//elb1jjmSalida1.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>C://dev//logs//elb1jjmSalida1.%i.zip
+			</fileNamePattern>
+			<minIndex>1</minIndex> <!-- MIN FILES -->
+			<maxIndex>3</maxIndex> <!-- MAX FILES -->
+		</rollingPolicy>
+		<!-- How often will create a file with the following part of the logs -->
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>50KB</maxFileSize> <!-- File size -->
+		</triggeringPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%method]
+				-%msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- OUTPUT CONFIGURATION 2 -->
+	<appender name="Salida2"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>C://dev//logs//elb1jjmSalida2.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>C://dev//logs//elb1jjmSalida2.%i.zip
+			</fileNamePattern>
+			<minIndex>1</minIndex> <!-- MIN FILES -->
+			<maxIndex>3</maxIndex> <!-- MAX FILES -->
+		</rollingPolicy>
+		<!-- How often will create a file with the following part of the logs -->
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>50KB</maxFileSize> <!-- File size -->
+		</triggeringPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%method]
+				-%msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- ROOT LOGGER -->
+	<root level="info">
+		<appender-ref ref="Salida1" />
+	</root>
+
+	<!-- NEW LOGGER -->
+	<logger name="com.everis.desafio_logback.debug" level="debug" additivity="false">
+		<appender-ref ref="Salida2" />
+	</logger>
+
+</configuration>
